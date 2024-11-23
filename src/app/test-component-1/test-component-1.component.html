@@ -1,0 +1,42 @@
+<p>test-component-1 works!</p>
+
+
+<div>
+
+  <h2> Test component 1</h2>
+
+  <p> Test String is= {{this.testString}}</p>
+
+  <p> Test Number is= {{this.testNumber}}</p>
+
+  <button (click)="onClickIncrementNumber()"> incrementNumber</button>
+
+  @if (this.testNumber % 2 ==0 ) {
+      <p> pari </p>
+
+  } @else {
+
+    <p> dispari </p>
+  }
+
+
+
+  <ul>
+
+  @for( str of this.testStrings; track str ){
+      <li>
+        {{str}}
+    </li>
+  }
+
+  </ul>
+
+
+
+  <h3> String from service= {{this.getServiceString()}}</h3>
+
+
+
+
+
+</div>
