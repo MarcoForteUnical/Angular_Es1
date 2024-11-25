@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {TestComponent1Component} from "./test-component-1/test-component-1.component";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet , TestComponent1Component],
+  imports: [RouterOutlet , HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

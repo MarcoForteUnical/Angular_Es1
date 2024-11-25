@@ -1,0 +1,14 @@
+<p>piatto-home works!</p>
+
+
+<h3>Piatti</h3>
+
+
+
+<ul>
+  @for (piatto of piatti; track piatto.nome) {
+    <li> <a routerLink="{{piatto.nome}}"> {{ piatto.nome }}  </a> - {{piatto.ingredienti}}</li>
+  }
+</ul>
+
+

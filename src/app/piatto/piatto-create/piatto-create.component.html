@@ -1,0 +1,19 @@
+
+
+<h2> create nuovo piatto</h2>
+
+<form  class="row g-3">
+
+
+  <div class="col-md-6">
+    <label for="fname" class="form-label">Nome:</label>
+    <input type="text" id="fname" [(ngModel)]="piatto.nome"  name="nome" class="form-control" >
+  </div>
+  <div class="col-md-6">
+    <label for="lname" class="form-label">Ingredienti:</label>
+    <input type="text" id="lname" [(ngModel)]="piatto.ingredienti" name="ingredienti"  class="form-control">
+  </div>
+
+  <button (click)="onSave()">SAVE</button>
+
+</form>

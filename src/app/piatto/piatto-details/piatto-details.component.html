@@ -1,0 +1,37 @@
+@if (loading) {
+  <app-loading></app-loading>
+} @else {
+
+
+  @if (piatto) {
+
+
+    <!-- Aggiunta di classi Bootstrap per organizzare il form -->
+    <form  class="row g-3">
+
+
+      <div class="col-md-6">
+        <label for="fname" class="form-label">Nome:</label>
+        <input type="text" id="fname" [ngModel]="piatto.nome"  name="nome" class="form-control" disabled>
+      </div>
+      <div class="col-md-6">
+        <label for="lname" class="form-label">Ingredienti:</label>
+        <input type="text" id="lname" [(ngModel)]="piatto.ingredienti" name="ingredienti"  class="form-control">
+      </div>
+
+    <button (click)="onUpdate()">SAVE</button>
+
+    </form>
+
+
+
+  }
+
+
+}
+
+
+
+
+
+
