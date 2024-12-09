@@ -7,6 +7,9 @@ import {PiattoCreateComponent} from "./piatto/piatto-create/piatto-create.compon
 import {LoginComponent} from "./auth/login/login.component";
 import {authGuard} from "./auth/auth.guard";
 import {UserProfileComponent} from "./user-profile/user-profile.component";
+import {ForbiddenComponent} from "./common/forbidden/forbidden.component";
+import {AdminHomeComponent} from "./admin/admin-home/admin-home.component";
+import {UserRole} from "./auth/user-role.enum";
 
 export const routes: Routes = [
 
@@ -18,5 +21,10 @@ export const routes: Routes = [
   { path: 'piatti/:nome', component: PiattoDetailsComponent },
 
   { path: 'login', component: LoginComponent },
-  { path: 'user-profile', component: UserProfileComponent }
+  { path: 'user-profile', component: UserProfileComponent },
+
+  { path: 'admin-home', component: AdminHomeComponent , canActivate :[authGuard] , data: { requiredRoles: [UserRole.ADMIN] } },
+
+  { path: '403', component: ForbiddenComponent }
+
 ];
