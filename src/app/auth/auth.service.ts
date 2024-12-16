@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {BehaviorSubject, catchError, Observable, of, switchMap} from 'rxjs';
+import {BehaviorSubject, catchError, Observable, of, switchMap, tap} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
   private apiUrl = 'api';
 
   constructor(private http: HttpClient) {}
@@ -23,13 +24,18 @@ export class AuthService {
 
 
   logout(): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/logout`, {}, { withCredentials: true });
+    console.log("performing logout");
+
+    return this.http.post<void>(`${this.apiUrl}/logout`, {}, { withCredentials: true })
+      .pipe(tap( ()=>
+        { this.currentUserSubject.next(null);}
+      ));
   }
 
 
 
   // Stream reattivo per i dati dell'utente
-  private currentUserSubject = new BehaviorSubject<any | null>(null);
+  currentUserSubject = new BehaviorSubject<any | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 
 
@@ -62,5 +68,9 @@ export class AuthService {
   }
 
 
+  performGoogleLogin(token: string) : Observable<void> {
+
+       return this.http.post<any>(`${this.apiUrl}/open/google-login` , token);
+  }
 
 }

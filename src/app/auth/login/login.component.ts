@@ -92,6 +92,15 @@ export class LoginComponent implements OnInit{
     console.log('Inviando il token al backend: ', token);
     // Usa HttpClient per inviare il token al backend
     // this.http.post('/api/auth/google', { token }).subscribe();
+
+
+    this.authService.performGoogleLogin(token)  .subscribe({
+      next: () => {
+        console.log("Logged User:", )
+        this.router.navigate([  "/user-profile" ]);
+      },
+      error: (err) => console.error('Login failed', err),
+    });
   }
 
 
